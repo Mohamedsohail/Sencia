@@ -1,0 +1,2177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENCIA — Meta Ads Master Plan | April 2026</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+        :root {
+            --primary: #1a1a2e;
+            --primary-light: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b81;
+            --gold: #f0a500;
+            --gold-light: #ffc947;
+            --green: #00b894;
+            --green-dark: #00a381;
+            --blue: #0984e3;
+            --blue-light: #74b9ff;
+            --purple: #6c5ce7;
+            --bg: #0f0f1a;
+            --card-bg: #1a1a2e;
+            --card-border: rgba(233,69,96,0.15);
+            --text: #e8e8f0;
+            --text-muted: #8a8aa0;
+            --text-dim: #5a5a70;
+            --gradient-1: linear-gradient(135deg, #e94560, #f0a500);
+            --gradient-2: linear-gradient(135deg, #6c5ce7, #0984e3);
+            --gradient-3: linear-gradient(135deg, #00b894, #0984e3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(ellipse at 20% 50%, rgba(233,69,96,0.15) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 20%, rgba(108,92,231,0.1) 0%, transparent 50%),
+                        var(--bg);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(233,69,96,0.08), transparent 70%);
+            top: -200px; right: -200px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(233,69,96,0.15);
+            border: 1px solid rgba(233,69,96,0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hero-stat {
+            background: rgba(26,26,46,0.8);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-stat .label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-stat .value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+        }
+
+        .hero-stat .sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* ── Navigation ── */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15,15,26,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(233,69,96,0.1);
+            padding: 0.8rem 0;
+        }
+
+        .nav-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0 2rem;
+            scrollbar-width: none;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-link {
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-light);
+            background: rgba(233,69,96,0.1);
+            border-color: rgba(233,69,96,0.2);
+        }
+
+        /* ── Sections ── */
+        .section {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 700px;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            border-color: rgba(233,69,96,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(233,69,96,0.08);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ── Tables ── */
+        .table-container {
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+            background: var(--card-bg);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background: rgba(233,69,96,0.08);
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-light);
+            border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text);
+        }
+
+        tr:hover td {
+            background: rgba(233,69,96,0.03);
+        }
+
+        /* ── Badges & Tags ── */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-red { background: rgba(233,69,96,0.15); color: #ff6b81; }
+        .badge-green { background: rgba(0,184,148,0.15); color: #55efc4; }
+        .badge-blue { background: rgba(9,132,227,0.15); color: #74b9ff; }
+        .badge-gold { background: rgba(240,165,0,0.15); color: #ffc947; }
+        .badge-purple { background: rgba(108,92,231,0.15); color: #a29bfe; }
+
+        .status-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .dot-red { background: var(--accent); }
+        .dot-green { background: var(--green); }
+        .dot-gold { background: var(--gold); }
+        .dot-blue { background: var(--blue); }
+
+        /* ── Metric Cards ── */
+        .metric-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .metric-change {
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .up { color: var(--green); }
+        .down { color: var(--accent); }
+
+        /* ── Progress Bars ── */
+        .progress-bar {
+            height: 8px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        /* ── Audience Cards ── */
+        .audience-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audience-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+        }
+
+        .audience-card.primary::before { background: var(--gradient-1); }
+        .audience-card.secondary::before { background: var(--gradient-2); }
+        .audience-card.tertiary::before { background: var(--gradient-3); }
+
+        .audience-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .audience-number {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .audience-card.primary .audience-number { background: rgba(233,69,96,0.15); color: var(--accent-light); }
+        .audience-card.secondary .audience-number { background: rgba(108,92,231,0.15); color: #a29bfe; }
+        .audience-card.tertiary .audience-number { background: rgba(0,184,148,0.15); color: #55efc4; }
+
+        .targeting-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 0.6rem 1rem;
+            font-size: 0.88rem;
+        }
+
+        .targeting-label {
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .targeting-value {
+            color: var(--text);
+        }
+
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 0.5rem;
+        }
+
+        .interest-tag {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background: rgba(255,255,255,0.06);
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--purple), var(--green));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.5rem;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            border: 3px solid var(--bg);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Dividers ── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--card-border), transparent);
+            margin: 2rem 0;
+        }
+
+        /* ── Alert Boxes ── */
+        .alert {
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .alert-danger {
+            background: rgba(233,69,96,0.08);
+            border-left: 4px solid var(--accent);
+        }
+
+        .alert-success {
+            background: rgba(0,184,148,0.08);
+            border-left: 4px solid var(--green);
+        }
+
+        .alert-info {
+            background: rgba(9,132,227,0.08);
+            border-left: 4px solid var(--blue);
+        }
+
+        .alert-warning {
+            background: rgba(240,165,0,0.08);
+            border-left: 4px solid var(--gold);
+        }
+
+        /* ── Budget Donut ── */
+        .budget-visual {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin: 2rem 0;
+        }
+
+        .donut-chart {
+            width: 220px; height: 220px;
+            position: relative;
+        }
+
+        .donut-chart svg {
+            transform: rotate(-90deg);
+        }
+
+        .donut-center {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .donut-center .amount {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .donut-center .label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .budget-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .legend-dot {
+            width: 14px; height: 14px;
+            border-radius: 4px;
+        }
+
+        .legend-info .legend-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .legend-info .legend-amount {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* ── Campaign Architecture ── */
+        .arch-tree {
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+        }
+
+        .arch-level {
+            padding-left: 1.5rem;
+            border-left: 2px solid rgba(233,69,96,0.2);
+            margin-left: 0.5rem;
+        }
+
+        .arch-item {
+            padding: 0.8rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .arch-item::before {
+            content: '';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            width: 1.5rem;
+            height: 2px;
+            background: rgba(233,69,96,0.2);
+        }
+
+        .arch-campaign {
+            background: rgba(233,69,96,0.1);
+            border: 1px solid rgba(233,69,96,0.2);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-left: -1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .arch-campaign::before { display: none; }
+
+        .arch-adset {
+            background: rgba(108,92,231,0.08);
+            border: 1px solid rgba(108,92,231,0.15);
+        }
+
+        .arch-ad {
+            background: rgba(0,184,148,0.06);
+            border: 1px solid rgba(0,184,148,0.12);
+            font-size: 0.85rem;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 2.8rem; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .card-grid-3 { grid-template-columns: 1fr; }
+            .card-grid-2 { grid-template-columns: 1fr; }
+            .budget-visual { flex-direction: column; }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { grid-template-columns: 1fr; }
+            .section { padding: 2rem 1rem; }
+        }
+
+        /* ── Animations ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- HERO SECTION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">Propshell Performance Marketing</div>
+        <h1>SENCIA</h1>
+        <h2>Meta Ads Master Plan — April 2026</h2>
+        <p class="subtitle">Lead Generation Optimization | ₹6,000/Day Budget | Target CPL ₹300–350</p>
+
+        <div class="hero-stats fade-in">
+            <div class="hero-stat stagger-1">
+                <div class="label">Daily Budget</div>
+                <div class="value">₹6,000</div>
+                <div class="sub">Monthly: ₹1,80,000</div>
+            </div>
+            <div class="hero-stat stagger-2">
+                <div class="label">Target CPL</div>
+                <div class="value">₹300-350</div>
+                <div class="sub">Current: ~₹528</div>
+            </div>
+            <div class="hero-stat stagger-3">
+                <div class="label">Target Leads/Day</div>
+                <div class="value">17-20</div>
+                <div class="sub">Current: ~11/day</div>
+            </div>
+            <div class="hero-stat stagger-4">
+                <div class="label">Project</div>
+                <div class="value">152</div>
+                <div class="sub">Villa Plots, 593-2400 sqft</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- NAVIGATION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<nav class="nav-container">
+    <div class="nav-inner">
+        <a href="#analysis" class="nav-link active">Current Analysis</a>
+        <a href="#problems" class="nav-link">Key Problems</a>
+        <a href="#architecture" class="nav-link">Campaign Architecture</a>
+        <a href="#audiences" class="nav-link">Audience Setup</a>
+        <a href="#budget" class="nav-link">Budget Allocation</a>
+        <a href="#creatives" class="nav-link">Creative Strategy</a>
+        <a href="#optimization" class="nav-link">Optimization Plan</a>
+        <a href="#kpis" class="nav-link">KPI Targets</a>
+        <a href="#timeline" class="nav-link">Timeline</a>
+    </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 1: PROJECT OVERVIEW -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="project">
+    <div class="section-header">
+        <div class="section-number">Section 01</div>
+        <h2 class="section-title">Project Overview — SENCIA</h2>
+        <p class="section-desc">Premium villa plots in Maraimalai Nagar, Chennai by Propshell Properties</p>
+    </div>
+
+    <div class="card-grid-3">
+        <div class="card fade-in">
+            <div class="card-icon" style="background: rgba(233,69,96,0.12);">📍</div>
+            <h3>Location</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                Pavendhar Road, Maraimalai Nagar, Chennai - 603209<br><br>
+                <strong style="color: var(--text);">Connectivity:</strong><br>
+                • GST Road (NH45) — 3 km<br>
+                • Maraimalai Nagar Railway Stn — 2 km<br>
+                • Chengalpattu — 15 km<br>
+                • Tambaram — 20 km<br>
+                • Chennai Airport — 45 km
+            </p>
+        </div>
+        <div class="card fade-in stagger-1">
+            <div class="card-icon" style="background: rgba(240,165,0,0.12);">🏡</div>
+            <h3>Product Details</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                <strong style="color: var(--text);">Type:</strong> Villa Plots (Gated Community)<br>
+                <strong style="color: var(--text);">Total Plots:</strong> 152<br>
+                <strong style="color: var(--text);">Plot Sizes:</strong> 593 – 2,400 sq.ft<br>
+                <strong style="color: var(--text);">Price:</strong> ₹2,690/sq.ft onwards<br>
+                <strong style="color: var(--text);">Range:</strong> ₹16L – ₹64L<br>
+                <strong style="color: var(--text);">Area:</strong> 5 Acres<br>
+                <strong style="color: var(--text);">RERA:</strong> TN/35/Layout/1251/2025
+            </p>
+        </div>
+        <div class="card fade-in stagger-2">
+            <div class="card-icon" style="background: rgba(0,184,148,0.12);">✨</div>
+            <h3>Key Amenities</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+                • Clubhouse<br>
+                • Landscaped Park<br>
+                • Children's Play Area<br>
+                • Outdoor Gym<br>
+                • Yoga & Meditation Zone<br>
+                • 24/7 Security + CCTV<br>
+                • Blacktop Roads<br>
+                • Individual UG Water Line<br>
+                • Fully Lighted Campus
+            </p>
+        </div>
+    </div>
+
+    <div class="alert alert-info" style="margin-top: 2rem;">
+        <strong>USP for Ads:</strong> RERA-approved gated community | Starting ₹16L | Near GST Road & Railway Station | 5-acre campus with premium amenities | EMI from ₹8,999/month*
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 2: CURRENT PERFORMANCE ANALYSIS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="analysis">
+    <div class="section-header">
+        <div class="section-number">Section 02</div>
+        <h2 class="section-title">Current Performance Analysis</h2>
+        <p class="section-desc">Deep dive into Windsor.ai data — Last 30 days (March 3 – April 1, 2026)</p>
+    </div>
+
+    <!-- Overall Metrics -->
+    <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; margin-bottom: 2rem;">
+        <div class="metric-card">
+            <div class="metric-label">Total Spend</div>
+            <div class="metric-value" style="color: var(--accent-light); font-size: 1.5rem;">₹2,03,874</div>
+            <div class="metric-change" style="color: var(--text-dim);">30-day period</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Avg Daily Spend</div>
+            <div class="metric-value" style="color: var(--gold); font-size: 1.5rem;">₹6,796</div>
+            <div class="metric-change down">↑ Over ₹6K budget</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Total Clicks</div>
+            <div class="metric-value" style="color: var(--blue-light); font-size: 1.5rem;">8,725</div>
+            <div class="metric-change" style="color: var(--text-dim);">291/day avg</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Avg CPC</div>
+            <div class="metric-value" style="color: #a29bfe; font-size: 1.5rem;">₹23.37</div>
+            <div class="metric-change down">Andromeda inflating</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Avg CTR</div>
+            <div class="metric-value" style="color: var(--green); font-size: 1.5rem;">0.99%</div>
+            <div class="metric-change" style="color: var(--text-dim);">Needs improvement</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-label">Baseline CPL</div>
+            <div class="metric-value" style="color: var(--accent); font-size: 1.5rem;">₹528</div>
+            <div class="metric-change down">Target: ₹300-350</div>
+        </div>
+    </div>
+
+    <!-- Campaign Breakdown Table -->
+    <h3 style="font-family: 'Space Grotesk'; margin-bottom: 1rem; font-size: 1.3rem;">Campaign Performance Breakdown</h3>
+    <div class="table-container" style="margin-bottom: 2rem;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Campaign</th>
+                    <th>Ad Set</th>
+                    <th>Spend (30d)</th>
+                    <th>Impressions</th>
+                    <th>Clicks</th>
+                    <th>CPC</th>
+                    <th>CTR</th>
+                    <th>CPM</th>
+                    <th>Verdict</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="3"><strong>Sencia Campaign Lg 29-Jan</strong></td>
+                    <td>Around 30km Chennai</td>
+                    <td>₹48,401</td>
+                    <td>3,39,428</td>
+                    <td>3,130</td>
+                    <td>₹15.46</td>
+                    <td>0.92%</td>
+                    <td>₹142.60</td>
+                    <td><span class="badge badge-gold">Optimize</span></td>
+                </tr>
+                <tr>
+                    <td>Chengalpattu</td>
+                    <td>₹47,917</td>
+                    <td>3,72,869</td>
+                    <td>3,316</td>
+                    <td>₹14.45</td>
+                    <td>0.89%</td>
+                    <td>₹128.50</td>
+                    <td><span class="badge badge-gold">Optimize</span></td>
+                </tr>
+                <tr>
+                    <td style="color: #55efc4;"><strong>Maraimalai Nagar</strong></td>
+                    <td>₹15,829</td>
+                    <td>1,65,651</td>
+                    <td>2,188</td>
+                    <td style="color: #55efc4;"><strong>₹7.24</strong></td>
+                    <td style="color: #55efc4;"><strong>1.32%</strong></td>
+                    <td>₹95.55</td>
+                    <td><span class="badge badge-green">Best CPC</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Andromeda Camp 16/03</strong></td>
+                    <td>sencia</td>
+                    <td style="color: #ff6b81;"><strong>₹30,839</strong></td>
+                    <td>89,217</td>
+                    <td>1,091</td>
+                    <td style="color: #ff6b81;"><strong>₹28.27</strong></td>
+                    <td>1.22%</td>
+                    <td style="color: #ff6b81;"><strong>₹345.67</strong></td>
+                    <td><span class="badge badge-red">Kill/Pause</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Ad-Level Performance (Last 7 Days) -->
+    <h3 style="font-family: 'Space Grotesk'; margin-bottom: 1rem; font-size: 1.3rem;">Ad Creative Performance (Last 7 Days)</h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Campaign</th>
+                    <th>Ad Set</th>
+                    <th>Ad Name</th>
+                    <th>Spend</th>
+                    <th>Clicks</th>
+                    <th>CPC</th>
+                    <th>CTR</th>
+                    <th>Verdict</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="5">Sencia Lg 29-Jan</td>
+                    <td>30km Chennai</td>
+                    <td style="color: #55efc4;"><strong>Real Estate-365 Rs 2680</strong></td>
+                    <td>₹9,846</td>
+                    <td>749</td>
+                    <td style="color: #55efc4;"><strong>₹13.15</strong></td>
+                    <td>1.02%</td>
+                    <td><span class="badge badge-green">Winner</span></td>
+                </tr>
+                <tr>
+                    <td>30km Chennai</td>
+                    <td>sencia actual Price</td>
+                    <td>₹592</td>
+                    <td>18</td>
+                    <td style="color: #ff6b81;">₹32.88</td>
+                    <td>1.02%</td>
+                    <td><span class="badge badge-red">Pause</span></td>
+                </tr>
+                <tr>
+                    <td>Maraimalai Nagar</td>
+                    <td style="color: #55efc4;"><strong>Real Estate-365 Rs 2680</strong></td>
+                    <td>₹1,745</td>
+                    <td>280</td>
+                    <td style="color: #55efc4;"><strong>₹6.23</strong></td>
+                    <td style="color: #55efc4;"><strong>2.13%</strong></td>
+                    <td><span class="badge badge-green">Top Performer</span></td>
+                </tr>
+                <tr>
+                    <td>Maraimalai Nagar</td>
+                    <td>sencia actual Price – Copy</td>
+                    <td>₹1,909</td>
+                    <td>260</td>
+                    <td>₹7.34</td>
+                    <td>0.90%</td>
+                    <td><span class="badge badge-blue">Keep</span></td>
+                </tr>
+                <tr>
+                    <td>Chengalpattu</td>
+                    <td>sencia actual Price – Copy 2</td>
+                    <td>₹5,052</td>
+                    <td>583</td>
+                    <td>₹8.67</td>
+                    <td>0.77%</td>
+                    <td><span class="badge badge-blue">Keep</span></td>
+                </tr>
+                <tr>
+                    <td rowspan="3">Andromeda 16/03</td>
+                    <td>sencia</td>
+                    <td style="color: #ff6b81;">Mr.realtor video</td>
+                    <td style="color: #ff6b81;">₹10,110</td>
+                    <td>420</td>
+                    <td style="color: #ff6b81;">₹24.07</td>
+                    <td>1.37%</td>
+                    <td><span class="badge badge-red">High CPC</span></td>
+                </tr>
+                <tr>
+                    <td>sencia</td>
+                    <td style="color: #ff6b81;">Green creatives</td>
+                    <td>₹3,003</td>
+                    <td>75</td>
+                    <td style="color: #ff6b81;">₹40.04</td>
+                    <td>1.34%</td>
+                    <td><span class="badge badge-red">Kill</span></td>
+                </tr>
+                <tr>
+                    <td>sencia</td>
+                    <td style="color: #ff6b81;">Market Thamizha Video</td>
+                    <td>₹1,658</td>
+                    <td>43</td>
+                    <td style="color: #ff6b81;">₹38.57</td>
+                    <td>1.08%</td>
+                    <td><span class="badge badge-red">Kill</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 3: KEY PROBLEMS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="problems">
+    <div class="section-header">
+        <div class="section-number">Section 03</div>
+        <h2 class="section-title">Key Problems Identified</h2>
+        <p class="section-desc">Critical issues bleeding budget and inflating CPL</p>
+    </div>
+
+    <div class="card-grid-2">
+        <div class="card" style="border-left: 4px solid var(--accent);">
+            <h3 style="color: var(--accent-light);">🔴 Problem 1: Andromeda Campaign is a Budget Bleeder</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Spending <strong style="color: var(--text);">₹30,839 in 16 days</strong> (~₹1,927/day) with CPC of ₹28.27 — nearly <strong>4x higher</strong> than Maraimalai Nagar adset. CPM at ₹345 is obscenely high, suggesting audience saturation and poor relevance.
+            </p>
+            <div class="alert alert-danger">
+                <strong>Action:</strong> PAUSE immediately. Redirect ₹2,000/day back to performing adsets.
+            </div>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--gold);">
+            <h3 style="color: var(--gold-light);">🟡 Problem 2: Budget Misallocation Across Adsets</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Maraimalai Nagar adset delivers <strong style="color: var(--text);">CPC of ₹7.24</strong> (best) but gets only <strong>₹528/day</strong> budget. Meanwhile, 30km Chennai gets ₹1,613/day at ₹15.46 CPC. The best performer is starved.
+            </p>
+            <div class="alert alert-warning">
+                <strong>Action:</strong> Reallocate 40% of budget to Maraimalai Nagar. Scale the winner.
+            </div>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--blue);">
+            <h3 style="color: var(--blue-light);">🔵 Problem 3: Limited Creative Variety</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Only <strong style="color: var(--text);">2-3 active creatives</strong> per adset. "Real Estate-365 Rs 2680" carries the load. Creative fatigue is inevitable. Need at least 5-8 creatives per adset for healthy rotation.
+            </p>
+            <div class="alert alert-info">
+                <strong>Action:</strong> Launch 5 new creatives per adset — mix of static, carousel & video.
+            </div>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--purple);">
+            <h3 style="color: #a29bfe;">🟣 Problem 4: No Retargeting Funnel</h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+                Running only cold lead gen campaigns. Zero retargeting for website visitors, video viewers, or form openers. Missing easy wins from warm audiences that already know the project.
+            </p>
+            <div class="alert" style="background: rgba(108,92,231,0.08); border-left: 4px solid var(--purple);">
+                <strong>Action:</strong> Set up 3-tier retargeting funnel for warm and hot leads.
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--accent);">
+        <h3 style="color: var(--accent-light);">🔴 Problem 5: CPL at ₹528 — Nearly 2x Above Target</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">
+            With 11 leads/day at ₹528 CPL, you're paying <strong style="color: var(--text);">₹5,808/day for leads</strong>. At target CPL of ₹325 with the same ₹6,000 budget, you should be getting <strong style="color: #55efc4;">18-20 leads/day</strong>. The gap is caused by: (1) Andromeda bleeding budget, (2) starving the best-performing adset, (3) no retargeting funnel, and (4) limited creative rotation. This plan fixes all four.
+        </p>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 4: NEW CAMPAIGN ARCHITECTURE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="architecture">
+    <div class="section-header">
+        <div class="section-number">Section 04</div>
+        <h2 class="section-title">New Campaign Architecture</h2>
+        <p class="section-desc">Restructured for lead optimization — kill bleeders, scale winners, add retargeting</p>
+    </div>
+
+    <div class="arch-tree">
+        <!-- Campaign 1 -->
+        <div class="arch-item arch-campaign" style="background: rgba(233,69,96,0.12);">
+            🎯 Campaign 1: SENCIA_LeadGen_Cold_Apr26 <span class="badge badge-red" style="margin-left: 10px;">₹4,200/day | 70% Budget</span>
+        </div>
+        <div class="arch-level">
+            <div class="arch-item arch-adset">
+                📋 Ad Set 1: Maraimalai Nagar — Hyperlocal <span class="badge badge-green" style="margin-left: 8px;">₹1,500/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Ad 1: Real Estate-365 Rs 2680 (Proven Winner)</div>
+                <div class="arch-item arch-ad">🎨 Ad 2: Price Anchor — "Plots from ₹16L" Static</div>
+                <div class="arch-item arch-ad">🎨 Ad 3: Walkthrough Video — Site & Amenities</div>
+                <div class="arch-item arch-ad">🎨 Ad 4: Testimonial Carousel — Happy Buyers</div>
+                <div class="arch-item arch-ad">🎨 Ad 5: Location Advantage Infographic</div>
+            </div>
+            <div class="arch-item arch-adset">
+                📋 Ad Set 2: Chengalpattu Corridor <span class="badge badge-blue" style="margin-left: 8px;">₹1,200/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Ad 1: sencia actual Price – Copy 2 (Performing ₹8.67 CPC)</div>
+                <div class="arch-item arch-ad">🎨 Ad 2: "15 Min from Chengalpattu" Location Ad</div>
+                <div class="arch-item arch-ad">🎨 Ad 3: Price Comparison — Sencia vs Market</div>
+                <div class="arch-item arch-ad">🎨 Ad 4: EMI Calculator Creative</div>
+                <div class="arch-item arch-ad">🎨 Ad 5: RERA Trust Badge Creative</div>
+            </div>
+            <div class="arch-item arch-adset">
+                📋 Ad Set 3: Chennai Metro — 30km Radius <span class="badge badge-gold" style="margin-left: 8px;">₹1,000/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Ad 1: Real Estate-365 Rs 2680 (Proven)</div>
+                <div class="arch-item arch-ad">🎨 Ad 2: "Investment Plot Near GST Road" Static</div>
+                <div class="arch-item arch-ad">🎨 Ad 3: Weekend Site Visit Invite Video</div>
+                <div class="arch-item arch-ad">🎨 Ad 4: Limited Plots Urgency Creative</div>
+            </div>
+            <div class="arch-item arch-adset">
+                📋 Ad Set 4: Lookalike 1% — Past Converters <span class="badge badge-purple" style="margin-left: 8px;">₹500/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Ad 1-3: Top 3 performing creatives from above</div>
+            </div>
+        </div>
+
+        <div style="margin: 1.5rem 0;"></div>
+
+        <!-- Campaign 2 -->
+        <div class="arch-item arch-campaign" style="background: rgba(108,92,231,0.12); border-color: rgba(108,92,231,0.3);">
+            🔄 Campaign 2: SENCIA_Retarget_Warm_Apr26 <span class="badge badge-purple" style="margin-left: 10px;">₹1,200/day | 20% Budget</span>
+        </div>
+        <div class="arch-level">
+            <div class="arch-item arch-adset" style="background: rgba(108,92,231,0.08);">
+                📋 Ad Set 1: Website Visitors (7-day) <span class="badge badge-purple" style="margin-left: 8px;">₹500/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Offer Ad: "Book Site Visit This Weekend — Free Pickup"</div>
+                <div class="arch-item arch-ad">🎨 Social Proof: "50+ Families Already Booked"</div>
+            </div>
+            <div class="arch-item arch-adset" style="background: rgba(108,92,231,0.08);">
+                📋 Ad Set 2: Video Viewers 75%+ (14-day) <span class="badge badge-purple" style="margin-left: 8px;">₹400/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Detailed Walkthrough + Pricing Breakdown</div>
+                <div class="arch-item arch-ad">🎨 Customer Testimonial Video</div>
+            </div>
+            <div class="arch-item arch-adset" style="background: rgba(108,92,231,0.08);">
+                📋 Ad Set 3: Lead Form Openers (Non-Submit, 14-day) <span class="badge badge-purple" style="margin-left: 8px;">₹300/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Limited Time Offer — "Last 30 Plots at Launch Price"</div>
+            </div>
+        </div>
+
+        <div style="margin: 1.5rem 0;"></div>
+
+        <!-- Campaign 3 -->
+        <div class="arch-item arch-campaign" style="background: rgba(0,184,148,0.12); border-color: rgba(0,184,148,0.3);">
+            🧪 Campaign 3: SENCIA_Testing_Apr26 <span class="badge badge-green" style="margin-left: 10px;">₹600/day | 10% Budget</span>
+        </div>
+        <div class="arch-level">
+            <div class="arch-item arch-adset" style="background: rgba(0,184,148,0.06);">
+                📋 Ad Set 1: New Interest Stack Test <span class="badge badge-green" style="margin-left: 8px;">₹300/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 3 new creative angles (rotate weekly)</div>
+            </div>
+            <div class="arch-item arch-adset" style="background: rgba(0,184,148,0.06);">
+                📋 Ad Set 2: Broad Targeting (Advantage+) <span class="badge badge-green" style="margin-left: 8px;">₹300/day</span>
+            </div>
+            <div class="arch-level">
+                <div class="arch-item arch-ad">🎨 Top 2 proven creatives — let Meta find converters</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-success" style="margin-top: 2rem;">
+        <strong>Architecture Summary:</strong> 3 Campaigns → 9 Ad Sets → 25+ Creatives | Cold (70%) + Retarget (20%) + Testing (10%)
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 5: AUDIENCE SETUP GUIDE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="audiences">
+    <div class="section-header">
+        <div class="section-number">Section 05</div>
+        <h2 class="section-title">Audience Setup Guide</h2>
+        <p class="section-desc">Detailed targeting parameters for every ad set — copy-paste ready for Meta Ads Manager</p>
+    </div>
+
+    <!-- Audience 1 -->
+    <div class="audience-card primary" style="margin-bottom: 1.5rem;">
+        <div class="audience-header">
+            <div class="audience-number">A1</div>
+            <div>
+                <h3 style="margin-bottom: 0.2rem;">Maraimalai Nagar — Hyperlocal (TOP PERFORMER)</h3>
+                <span class="badge badge-green">Highest Priority | ₹1,500/day</span>
+            </div>
+        </div>
+
+        <div class="card-grid-2" style="gap: 2rem;">
+            <div>
+                <h4 style="color: var(--accent-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Demographics & Location</h4>
+                <div class="targeting-grid">
+                    <span class="targeting-label">Age</span>
+                    <span class="targeting-value">28 – 55</span>
+                    <span class="targeting-label">Gender</span>
+                    <span class="targeting-value">All</span>
+                    <span class="targeting-label">Location</span>
+                    <span class="targeting-value"><strong>Maraimalai Nagar</strong> (+10 km radius)<br>Include: Singaperumal Koil, Guduvancheri, Paranur, Padalam, Vandalur</span>
+                    <span class="targeting-label">Language</span>
+                    <span class="targeting-value">Tamil, English</span>
+                    <span class="targeting-label">Placement</span>
+                    <span class="targeting-value">Facebook Feed, Instagram Feed, Stories, Reels</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: var(--accent-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Interest Targeting</h4>
+                <div class="interest-tags">
+                    <span class="interest-tag">Real estate</span>
+                    <span class="interest-tag">Property investment</span>
+                    <span class="interest-tag">Residential plots</span>
+                    <span class="interest-tag">Villa plots</span>
+                    <span class="interest-tag">Land investment</span>
+                    <span class="interest-tag">Home ownership</span>
+                    <span class="interest-tag">CMDA approved plots</span>
+                    <span class="interest-tag">Maraimalai Nagar</span>
+                    <span class="interest-tag">MagicBricks</span>
+                    <span class="interest-tag">99acres</span>
+                    <span class="interest-tag">NoBroker</span>
+                    <span class="interest-tag">Housing.com</span>
+                    <span class="interest-tag">CommonFloor</span>
+                </div>
+                <h4 style="color: var(--accent-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem; margin-bottom: 0.5rem;">Behavior Targeting</h4>
+                <div class="interest-tags">
+                    <span class="interest-tag">Engaged shoppers</span>
+                    <span class="interest-tag">Recently moved</span>
+                    <span class="interest-tag">Likely to move</span>
+                    <span class="interest-tag">Home loan interest</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-success" style="margin-top: 1.5rem;">
+            <strong>Why this works:</strong> Hyperlocal targeting captures people who already know the area. Best CPC (₹6.23) and CTR (2.13%) in current data. These are high-intent local buyers.
+        </div>
+    </div>
+
+    <!-- Audience 2 -->
+    <div class="audience-card secondary" style="margin-bottom: 1.5rem;">
+        <div class="audience-header">
+            <div class="audience-number">A2</div>
+            <div>
+                <h3 style="margin-bottom: 0.2rem;">Chengalpattu Corridor — Regional Buyers</h3>
+                <span class="badge badge-blue">High Priority | ₹1,200/day</span>
+            </div>
+        </div>
+
+        <div class="card-grid-2" style="gap: 2rem;">
+            <div>
+                <h4 style="color: #a29bfe; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Demographics & Location</h4>
+                <div class="targeting-grid">
+                    <span class="targeting-label">Age</span>
+                    <span class="targeting-value">27 – 55</span>
+                    <span class="targeting-label">Gender</span>
+                    <span class="targeting-value">All</span>
+                    <span class="targeting-label">Location</span>
+                    <span class="targeting-value"><strong>Chengalpattu District</strong> (+15 km radius)<br>Include: Chengalpattu, Kelambakkam, Thiruporur, Padappai, Kanchipuram, Sriperumbudur</span>
+                    <span class="targeting-label">Language</span>
+                    <span class="targeting-value">Tamil, English</span>
+                    <span class="targeting-label">Placement</span>
+                    <span class="targeting-value">Facebook Feed, Instagram Feed, Stories, Reels</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: #a29bfe; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Interest Targeting</h4>
+                <div class="interest-tags">
+                    <span class="interest-tag">Real estate investing</span>
+                    <span class="interest-tag">Property</span>
+                    <span class="interest-tag">Plots for sale</span>
+                    <span class="interest-tag">Villa plots Chennai</span>
+                    <span class="interest-tag">Gated community</span>
+                    <span class="interest-tag">Land for sale</span>
+                    <span class="interest-tag">RERA approved</span>
+                    <span class="interest-tag">Home construction</span>
+                    <span class="interest-tag">99acres</span>
+                    <span class="interest-tag">MagicBricks</span>
+                    <span class="interest-tag">Square Yards</span>
+                </div>
+                <h4 style="color: #a29bfe; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem; margin-bottom: 0.5rem;">Narrow Further With</h4>
+                <div class="interest-tags">
+                    <span class="interest-tag">Income: Household income top 25-50%</span>
+                    <span class="interest-tag">Banking & finance interest</span>
+                    <span class="interest-tag">Home insurance</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audience 3 -->
+    <div class="audience-card tertiary" style="margin-bottom: 1.5rem;">
+        <div class="audience-header">
+            <div class="audience-number">A3</div>
+            <div>
+                <h3 style="margin-bottom: 0.2rem;">Chennai Metro — 30km Radius Investment Buyers</h3>
+                <span class="badge badge-gold">Medium Priority | ₹1,000/day</span>
+            </div>
+        </div>
+
+        <div class="card-grid-2" style="gap: 2rem;">
+            <div>
+                <h4 style="color: #55efc4; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Demographics & Location</h4>
+                <div class="targeting-grid">
+                    <span class="targeting-label">Age</span>
+                    <span class="targeting-value">30 – 55</span>
+                    <span class="targeting-label">Gender</span>
+                    <span class="targeting-value">All</span>
+                    <span class="targeting-label">Location</span>
+                    <span class="targeting-value"><strong>Chennai</strong> (+30 km radius)<br>Include: Tambaram, Chromepet, Pallavaram, Medavakkam, Velachery, Sholinganallur<br><strong>Exclude:</strong> Maraimalai Nagar, Chengalpattu (covered in A1 & A2)</span>
+                    <span class="targeting-label">Language</span>
+                    <span class="targeting-value">Tamil, English</span>
+                    <span class="targeting-label">Placement</span>
+                    <span class="targeting-value">Facebook Feed, Instagram Feed, Reels</span>
+                </div>
+            </div>
+            <div>
+                <h4 style="color: #55efc4; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Interest Targeting</h4>
+                <div class="interest-tags">
+                    <span class="interest-tag">Real estate</span>
+                    <span class="interest-tag">Property investment</span>
+                    <span class="interest-tag">Land investment</span>
+                    <span class="interest-tag">Villa plots</span>
+                    <span class="interest-tag">Wealth management</span>
+                    <span class="interest-tag">Mutual funds</span>
+                    <span class="interest-tag">Gold investment</span>
+                    <span class="interest-tag">SIP investing</span>
+                    <span class="interest-tag">Financial planning</span>
+                </div>
+                <h4 style="color: #55efc4; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 1.5rem; margin-bottom: 0.5rem;">Narrow Further With</h4>
+                <div class="interest-tags">
+                    <span class="interest-tag">MagicBricks OR 99acres OR NoBroker</span>
+                    <span class="interest-tag">OR Home loan OR HDFC Home Loan</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info" style="margin-top: 1.5rem;">
+            <strong>Strategy:</strong> Target investment-minded Chennai residents. Cross-interest with financial planning + real estate to find serious buyers, not browsers. Exclude A1 & A2 locations to avoid overlap.
+        </div>
+    </div>
+
+    <!-- Audience 4: Lookalike -->
+    <div class="audience-card primary" style="margin-bottom: 1.5rem;">
+        <div class="audience-header">
+            <div class="audience-number">A4</div>
+            <div>
+                <h3 style="margin-bottom: 0.2rem;">Lookalike 1% — Past Converters (Site Visitors + Leads)</h3>
+                <span class="badge badge-purple">Scale Audience | ₹500/day</span>
+            </div>
+        </div>
+
+        <div class="targeting-grid" style="max-width: 600px;">
+            <span class="targeting-label">Source</span>
+            <span class="targeting-value">Custom Audience: All leads from Sencia lead forms (last 90 days)</span>
+            <span class="targeting-label">Lookalike %</span>
+            <span class="targeting-value"><strong>1%</strong> (start tight, expand to 2% after validation)</span>
+            <span class="targeting-label">Location</span>
+            <span class="targeting-value">Chennai + Chengalpattu + Kanchipuram districts</span>
+            <span class="targeting-label">Age</span>
+            <span class="targeting-value">28 – 55</span>
+            <span class="targeting-label">Exclusions</span>
+            <span class="targeting-value">Exclude existing leads, past 30-day converters</span>
+        </div>
+    </div>
+
+    <!-- Retargeting Audiences -->
+    <h3 style="font-family: 'Space Grotesk'; margin: 2rem 0 1rem; font-size: 1.5rem;">Retargeting Audiences (Campaign 2)</h3>
+
+    <div class="card-grid-3">
+        <div class="card" style="border-top: 3px solid var(--accent);">
+            <h3>🔥 Hot — Website Visitors</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">People who visited propshell.com/sencia or sencia.propshell.com in last 7 days</p>
+            <div class="targeting-grid" style="font-size: 0.85rem;">
+                <span class="targeting-label">Window</span>
+                <span class="targeting-value">7 days</span>
+                <span class="targeting-label">Budget</span>
+                <span class="targeting-value">₹500/day</span>
+                <span class="targeting-label">Message</span>
+                <span class="targeting-value">Book site visit, limited plots, social proof</span>
+                <span class="targeting-label">Exclude</span>
+                <span class="targeting-value">Already submitted leads</span>
+            </div>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--gold);">
+            <h3>🔶 Warm — Video Viewers 75%+</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">People who watched 75%+ of any Sencia video ad in last 14 days</p>
+            <div class="targeting-grid" style="font-size: 0.85rem;">
+                <span class="targeting-label">Window</span>
+                <span class="targeting-value">14 days</span>
+                <span class="targeting-label">Budget</span>
+                <span class="targeting-value">₹400/day</span>
+                <span class="targeting-label">Message</span>
+                <span class="targeting-value">Detailed pricing, testimonials, walkthrough</span>
+                <span class="targeting-label">Exclude</span>
+                <span class="targeting-value">Already submitted leads</span>
+            </div>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--purple);">
+            <h3>🟣 Engaged — Form Openers</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">People who opened lead form but didn't submit in last 14 days</p>
+            <div class="targeting-grid" style="font-size: 0.85rem;">
+                <span class="targeting-label">Window</span>
+                <span class="targeting-value">14 days</span>
+                <span class="targeting-label">Budget</span>
+                <span class="targeting-value">₹300/day</span>
+                <span class="targeting-label">Message</span>
+                <span class="targeting-value">Urgency — "Only X plots left at launch price"</span>
+                <span class="targeting-label">Exclude</span>
+                <span class="targeting-value">Already submitted leads</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exclusions -->
+    <div class="card" style="margin-top: 1.5rem; border-left: 4px solid var(--gold);">
+        <h3 style="color: var(--gold-light);">⚠️ Critical Exclusions (Apply to ALL Ad Sets)</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem;">
+            <div>
+                <strong style="color: var(--text); font-size: 0.85rem;">Exclude Custom Audiences:</strong>
+                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>All existing Sencia leads (90 days)</li>
+                    <li>All site visitors from retarget campaign</li>
+                    <li>People who purchased (if list available)</li>
+                </ul>
+            </div>
+            <div>
+                <strong style="color: var(--text); font-size: 0.85rem;">Exclude Demographics:</strong>
+                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Age under 25 (low purchase intent)</li>
+                    <li>Students (Facebook category)</li>
+                </ul>
+            </div>
+            <div>
+                <strong style="color: var(--text); font-size: 0.85rem;">Exclude Locations:</strong>
+                <ul style="color: var(--text-muted); font-size: 0.85rem; padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Overlap between adsets (see audience notes)</li>
+                    <li>Tier 3 rural areas beyond target radius</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 6: BUDGET ALLOCATION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="budget">
+    <div class="section-header">
+        <div class="section-number">Section 06</div>
+        <h2 class="section-title">Budget Allocation</h2>
+        <p class="section-desc">₹6,000/day strategically distributed across 3 campaigns and 9 ad sets</p>
+    </div>
+
+    <div class="budget-visual">
+        <div class="donut-chart">
+            <svg viewBox="0 0 200 200" width="220" height="220">
+                <!-- Cold Campaign 70% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#e94560" stroke-width="28"
+                    stroke-dasharray="351.86 502.65" stroke-dashoffset="0" />
+                <!-- Retarget 20% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#6c5ce7" stroke-width="28"
+                    stroke-dasharray="100.53 502.65" stroke-dashoffset="-351.86" />
+                <!-- Testing 10% -->
+                <circle cx="100" cy="100" r="80" fill="none" stroke="#00b894" stroke-width="28"
+                    stroke-dasharray="50.27 502.65" stroke-dashoffset="-452.39" />
+            </svg>
+            <div class="donut-center">
+                <div class="amount">₹6,000</div>
+                <div class="label">Per Day</div>
+            </div>
+        </div>
+        <div class="budget-legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #e94560;"></div>
+                <div class="legend-info">
+                    <div class="legend-label">Cold Lead Gen (70%)</div>
+                    <div class="legend-amount">₹4,200/day → ₹1,26,000/month</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #6c5ce7;"></div>
+                <div class="legend-info">
+                    <div class="legend-label">Retargeting (20%)</div>
+                    <div class="legend-amount">₹1,200/day → ₹36,000/month</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background: #00b894;"></div>
+                <div class="legend-info">
+                    <div class="legend-label">Testing & Scaling (10%)</div>
+                    <div class="legend-amount">₹600/day → ₹18,000/month</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Budget Table -->
+    <div class="table-container" style="margin-top: 2rem;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Campaign</th>
+                    <th>Ad Set</th>
+                    <th>Daily Budget</th>
+                    <th>Monthly Budget</th>
+                    <th>% of Total</th>
+                    <th>Expected CPL</th>
+                    <th>Expected Leads/Day</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="background: rgba(233,69,96,0.04);">
+                    <td rowspan="4"><strong>Cold Lead Gen</strong></td>
+                    <td><span class="status-dot dot-green"></span>Maraimalai Nagar</td>
+                    <td><strong>₹1,500</strong></td>
+                    <td>₹45,000</td>
+                    <td>25%</td>
+                    <td style="color: #55efc4;">₹250-280</td>
+                    <td style="color: #55efc4;"><strong>5-6</strong></td>
+                </tr>
+                <tr style="background: rgba(233,69,96,0.04);">
+                    <td><span class="status-dot dot-blue"></span>Chengalpattu</td>
+                    <td><strong>₹1,200</strong></td>
+                    <td>₹36,000</td>
+                    <td>20%</td>
+                    <td>₹300-330</td>
+                    <td><strong>4</strong></td>
+                </tr>
+                <tr style="background: rgba(233,69,96,0.04);">
+                    <td><span class="status-dot dot-gold"></span>Chennai 30km</td>
+                    <td><strong>₹1,000</strong></td>
+                    <td>₹30,000</td>
+                    <td>17%</td>
+                    <td>₹330-370</td>
+                    <td><strong>3</strong></td>
+                </tr>
+                <tr style="background: rgba(233,69,96,0.04);">
+                    <td><span class="status-dot dot-red"></span>Lookalike 1%</td>
+                    <td><strong>₹500</strong></td>
+                    <td>₹15,000</td>
+                    <td>8%</td>
+                    <td>₹280-320</td>
+                    <td><strong>2</strong></td>
+                </tr>
+                <tr style="background: rgba(108,92,231,0.04);">
+                    <td rowspan="3"><strong>Retargeting</strong></td>
+                    <td><span class="status-dot dot-red"></span>Website Visitors</td>
+                    <td><strong>₹500</strong></td>
+                    <td>₹15,000</td>
+                    <td>8%</td>
+                    <td style="color: #55efc4;">₹150-200</td>
+                    <td style="color: #55efc4;"><strong>2-3</strong></td>
+                </tr>
+                <tr style="background: rgba(108,92,231,0.04);">
+                    <td><span class="status-dot dot-gold"></span>Video Viewers 75%</td>
+                    <td><strong>₹400</strong></td>
+                    <td>₹12,000</td>
+                    <td>7%</td>
+                    <td>₹180-250</td>
+                    <td><strong>2</strong></td>
+                </tr>
+                <tr style="background: rgba(108,92,231,0.04);">
+                    <td><span class="status-dot dot-blue"></span>Form Openers</td>
+                    <td><strong>₹300</strong></td>
+                    <td>₹9,000</td>
+                    <td>5%</td>
+                    <td style="color: #55efc4;">₹120-180</td>
+                    <td><strong>2</strong></td>
+                </tr>
+                <tr style="background: rgba(0,184,148,0.04);">
+                    <td rowspan="2"><strong>Testing</strong></td>
+                    <td><span class="status-dot dot-green"></span>New Interest Stack</td>
+                    <td><strong>₹300</strong></td>
+                    <td>₹9,000</td>
+                    <td>5%</td>
+                    <td>₹350-450</td>
+                    <td><strong>1</strong></td>
+                </tr>
+                <tr style="background: rgba(0,184,148,0.04);">
+                    <td><span class="status-dot dot-green"></span>Advantage+ Broad</td>
+                    <td><strong>₹300</strong></td>
+                    <td>₹9,000</td>
+                    <td>5%</td>
+                    <td>₹300-400</td>
+                    <td><strong>1</strong></td>
+                </tr>
+                <tr style="background: rgba(255,255,255,0.03);">
+                    <td colspan="2"><strong style="font-size: 1rem;">TOTAL</strong></td>
+                    <td><strong style="color: var(--accent-light); font-size: 1.1rem;">₹6,000</strong></td>
+                    <td><strong>₹1,80,000</strong></td>
+                    <td><strong>100%</strong></td>
+                    <td style="color: #55efc4;"><strong>₹280-330 blended</strong></td>
+                    <td style="color: #55efc4; font-size: 1.1rem;"><strong>18-22</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 7: CREATIVE STRATEGY -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="creatives">
+    <div class="section-header">
+        <div class="section-number">Section 07</div>
+        <h2 class="section-title">Creative Strategy</h2>
+        <p class="section-desc">Creative angles, formats, and copy frameworks for maximum lead conversion</p>
+    </div>
+
+    <div class="card-grid-3" style="margin-bottom: 2rem;">
+        <div class="card" style="border-top: 3px solid var(--accent);">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">📸</div>
+            <h3>Static Image Ads</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">Best for quick attention and clear pricing communication</p>
+            <div style="font-size: 0.85rem;">
+                <p><strong style="color: var(--accent-light);">Creative 1: Price Anchor</strong><br>
+                "Villa Plots from ₹16 Lakhs | Maraimalai Nagar"<br>
+                Big bold price + site image + RERA badge</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--accent-light);">Creative 2: EMI Hook</strong><br>
+                "Own a Plot for Just ₹8,999/month*"<br>
+                EMI calculator visual + CTA "Calculate Your EMI"</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--accent-light);">Creative 3: Location Advantage</strong><br>
+                "3 km from GST Road | 2 km from Railway Station"<br>
+                Map visual showing connectivity</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--accent-light);">Creative 4: Urgency</strong><br>
+                "Only 40 Plots Left at Launch Price"<br>
+                Counter visual + limited offer badge</p>
+            </div>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--blue);">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🎥</div>
+            <h3>Video Ads (15-30 sec)</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">Best for storytelling and site walkthrough</p>
+            <div style="font-size: 0.85rem;">
+                <p><strong style="color: var(--blue-light);">Video 1: Site Walkthrough</strong><br>
+                Drone shot → amenities → plots → pricing → CTA<br>
+                Hook: "Your dream plot is waiting at Maraimalai Nagar"</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--blue-light);">Video 2: Customer Testimonial</strong><br>
+                Real buyer speaking about why they chose Sencia<br>
+                Hook: "I compared 15 projects before choosing this one"</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--blue-light);">Video 3: Price Comparison</strong><br>
+                Sencia ₹2,690/sqft vs market ₹4,000+/sqft<br>
+                Hook: "Why pay more when you can get RERA-approved plots cheaper?"</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--blue-light);">Video 4: Tamil Voiceover (Local Feel)</strong><br>
+                Emotional storytelling in Tamil about owning land<br>
+                Hook: "சொந்த மனை... சொந்த வீடு... இப்போதே!"</p>
+            </div>
+        </div>
+        <div class="card" style="border-top: 3px solid var(--green);">
+            <div style="font-size: 2rem; margin-bottom: 1rem;">🎠</div>
+            <h3>Carousel Ads</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">Best for showing multiple features and plot options</p>
+            <div style="font-size: 0.85rem;">
+                <p><strong style="color: #55efc4;">Carousel 1: Plot Size Options</strong><br>
+                Card 1: 593 sqft — ₹16L<br>
+                Card 2: 1000 sqft — ₹27L<br>
+                Card 3: 1500 sqft — ₹40L<br>
+                Card 4: 2400 sqft — ₹64L<br>
+                Card 5: CTA "Choose Your Plot Size"</p>
+                <div class="divider"></div>
+                <p><strong style="color: #55efc4;">Carousel 2: Amenities Tour</strong><br>
+                Each card = 1 amenity with photo<br>
+                Clubhouse → Park → Gym → Security → Roads</p>
+                <div class="divider"></div>
+                <p><strong style="color: #55efc4;">Carousel 3: Why Sencia?</strong><br>
+                Card 1: RERA Approved<br>
+                Card 2: 5-Acre Gated Community<br>
+                Card 3: Near GST Road<br>
+                Card 4: Premium Amenities<br>
+                Card 5: Starting ₹16L Only</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Copy Templates -->
+    <h3 style="font-family: 'Space Grotesk'; margin-bottom: 1rem; font-size: 1.3rem;">Ad Copy Templates (Ready to Use)</h3>
+    <div class="card-grid-2">
+        <div class="card">
+            <h3 style="color: var(--accent-light);">Primary Text — Price Hook</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; line-height: 1.8;">
+                🏡 Own a RERA-Approved Villa Plot Starting at Just ₹16 Lakhs!<br><br>
+                📍 Sencia by Propshell — Maraimalai Nagar, Chennai<br><br>
+                ✅ 152 Premium Plots | 593 – 2,400 sq.ft<br>
+                ✅ 5-Acre Gated Community with Clubhouse<br>
+                ✅ 3 km from GST Road | 2 km from Railway Station<br>
+                ✅ EMI Starting from ₹8,999/month*<br><br>
+                📞 Book your FREE site visit today!<br>
+                Limited plots available at launch price.<br><br>
+                <em style="font-size: 0.8rem;">RERA: TN/35/Layout/1251/2025</em>
+            </p>
+        </div>
+        <div class="card">
+            <h3 style="color: var(--blue-light);">Primary Text — Investment Hook</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 8px; margin-top: 0.5rem; line-height: 1.8;">
+                📈 Smart investors are buying plots at ₹2,690/sq.ft while market rate is ₹4,000+<br><br>
+                Why Sencia, Maraimalai Nagar?<br><br>
+                🔹 RERA Approved — 100% Legal & Safe<br>
+                🔹 GST Road Proximity — High Appreciation Zone<br>
+                🔹 Gated Community — Premium Lifestyle<br>
+                🔹 Plot Sizes: 593 to 2,400 sq.ft<br><br>
+                Land is limited. Prices only go up. ⬆️<br><br>
+                👉 Register now for exclusive launch pricing.<br>
+                Free site visit with pickup available!<br><br>
+                <em style="font-size: 0.8rem;">RERA: TN/35/Layout/1251/2025</em>
+            </p>
+        </div>
+    </div>
+
+    <!-- Headlines -->
+    <div class="card" style="margin-top: 1.5rem;">
+        <h3>Headline Options (A/B Test These)</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 1rem;">
+            <div style="padding: 8px 12px; background: rgba(233,69,96,0.06); border-radius: 8px; font-size: 0.88rem;">
+                <strong>H1:</strong> Villa Plots from ₹16L — Maraimalai Nagar
+            </div>
+            <div style="padding: 8px 12px; background: rgba(108,92,231,0.06); border-radius: 8px; font-size: 0.88rem;">
+                <strong>H2:</strong> RERA Plots at ₹2,690/sqft — Book Now
+            </div>
+            <div style="padding: 8px 12px; background: rgba(0,184,148,0.06); border-radius: 8px; font-size: 0.88rem;">
+                <strong>H3:</strong> Own a Plot — EMI from ₹8,999/month
+            </div>
+            <div style="padding: 8px 12px; background: rgba(240,165,0,0.06); border-radius: 8px; font-size: 0.88rem;">
+                <strong>H4:</strong> 5-Acre Gated Community — Limited Plots Left
+            </div>
+            <div style="padding: 8px 12px; background: rgba(9,132,227,0.06); border-radius: 8px; font-size: 0.88rem;">
+                <strong>H5:</strong> சென்னையில் சொந்த மனை — ₹16 லட்சம் முதல்
+            </div>
+            <div style="padding: 8px 12px; background: rgba(233,69,96,0.06); border-radius: 8px; font-size: 0.88rem;">
+                <strong>H6:</strong> Free Site Visit This Weekend — Register Now
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 8: OPTIMIZATION PLAN -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="optimization">
+    <div class="section-header">
+        <div class="section-number">Section 08</div>
+        <h2 class="section-title">Daily Optimization Playbook</h2>
+        <p class="section-desc">Systematic rules-based optimization to hit ₹300-350 CPL target</p>
+    </div>
+
+    <div class="card-grid-2" style="margin-bottom: 2rem;">
+        <div class="card">
+            <h3 style="color: var(--accent-light);">🔴 Kill Rules (Pause Immediately)</h3>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 1rem;">
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    Ad CPC > ₹25 after 500+ impressions → <strong style="color: var(--accent);">PAUSE</strong>
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    Ad set CPL > ₹500 after ₹1,500 spend → <strong style="color: var(--accent);">PAUSE</strong>
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    CTR < 0.5% after 2,000 impressions → <strong style="color: var(--accent);">PAUSE</strong>
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    Frequency > 2.5 on any ad set → <strong style="color: var(--accent);">REFRESH CREATIVE</strong>
+                </div>
+                <div style="padding: 8px 0;">
+                    Zero leads after ₹1,000 spend → <strong style="color: var(--accent);">PAUSE AD</strong>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <h3 style="color: #55efc4;">🟢 Scale Rules (Increase Budget)</h3>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 1rem;">
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    Ad set CPL < ₹280 for 3 consecutive days → <strong style="color: var(--green);">INCREASE 20%</strong>
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    CTR > 1.5% with CPC < ₹12 → <strong style="color: var(--green);">SCALE TO 2x BUDGET</strong>
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    Retarget CPL < ₹200 → <strong style="color: var(--green);">INCREASE WINDOW TO 30 DAYS</strong>
+                </div>
+                <div style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    Lookalike CPL < ₹300 → <strong style="color: var(--green);">EXPAND TO 2% LOOKALIKE</strong>
+                </div>
+                <div style="padding: 8px 0;">
+                    Testing ad set wins → <strong style="color: var(--green);">GRADUATE TO COLD CAMPAIGN</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 1.5rem;">
+        <h3>📅 Daily Optimization Checklist</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; font-size: 0.88rem;">
+            <div>
+                <strong style="color: var(--gold-light);">Morning (10 AM):</strong>
+                <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Check yesterday's spend vs budget pacing</li>
+                    <li>Review CPL by ad set — flag any above ₹400</li>
+                    <li>Check frequency across all ad sets</li>
+                    <li>Pause any ads hitting kill rules</li>
+                </ul>
+            </div>
+            <div>
+                <strong style="color: var(--gold-light);">Evening (6 PM):</strong>
+                <ul style="color: var(--text-muted); padding-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>Review day's lead count & quality</li>
+                    <li>Check if any ad set overspent</li>
+                    <li>Scale winners hitting scale rules</li>
+                    <li>Plan next day's creative refresh if needed</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lead Quality Framework -->
+    <div class="card">
+        <h3>Lead Quality Assessment Framework</h3>
+        <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">Score each lead 1-10 based on these criteria to identify which ad sets deliver quality leads:</p>
+        <div class="table-container" style="border: none;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criteria</th>
+                        <th>High Quality (8-10)</th>
+                        <th>Medium (5-7)</th>
+                        <th>Low (1-4)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Phone Pickup</strong></td>
+                        <td style="color: #55efc4;">Answers on 1st call</td>
+                        <td style="color: var(--gold);">Answers within 24hrs</td>
+                        <td style="color: var(--accent-light);">No pickup / fake number</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Budget Readiness</strong></td>
+                        <td style="color: #55efc4;">Budget confirmed ₹16L+</td>
+                        <td style="color: var(--gold);">Exploring options</td>
+                        <td style="color: var(--accent-light);">No budget / just browsing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Timeline</strong></td>
+                        <td style="color: #55efc4;">Ready in 1-3 months</td>
+                        <td style="color: var(--gold);">6-12 months</td>
+                        <td style="color: var(--accent-light);">No timeline / 2+ years</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Site Visit</strong></td>
+                        <td style="color: #55efc4;">Agrees to visit</td>
+                        <td style="color: var(--gold);">Asks for more info first</td>
+                        <td style="color: var(--accent-light);">Refuses / wrong location</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 9: KPI TARGETS -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="kpis">
+    <div class="section-header">
+        <div class="section-number">Section 09</div>
+        <h2 class="section-title">KPI Targets & Projections</h2>
+        <p class="section-desc">Month-by-month targets with progressive improvement</p>
+    </div>
+
+    <div class="table-container" style="margin-bottom: 2rem;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Current (Pre-Opt)</th>
+                    <th style="color: #ffc947;">Week 1 (Apr 2-8)</th>
+                    <th style="color: #74b9ff;">Week 2 (Apr 9-15)</th>
+                    <th style="color: #a29bfe;">Week 3 (Apr 16-22)</th>
+                    <th style="color: #55efc4;">Week 4 (Apr 23-30)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Daily Spend</strong></td>
+                    <td>₹6,796</td>
+                    <td>₹6,000</td>
+                    <td>₹6,000</td>
+                    <td>₹6,000</td>
+                    <td>₹6,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Leads/Day</strong></td>
+                    <td style="color: var(--accent-light);">~11</td>
+                    <td>14-16</td>
+                    <td>16-18</td>
+                    <td>18-20</td>
+                    <td style="color: #55efc4;"><strong>20-22</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CPL (Blended)</strong></td>
+                    <td style="color: var(--accent-light);">₹528</td>
+                    <td>₹380-420</td>
+                    <td>₹340-380</td>
+                    <td>₹310-350</td>
+                    <td style="color: #55efc4;"><strong>₹280-330</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CTR</strong></td>
+                    <td>0.99%</td>
+                    <td>1.1%</td>
+                    <td>1.3%</td>
+                    <td>1.5%</td>
+                    <td style="color: #55efc4;"><strong>1.5%+</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>CPC</strong></td>
+                    <td>₹23.37</td>
+                    <td>₹16-18</td>
+                    <td>₹13-16</td>
+                    <td>₹11-14</td>
+                    <td style="color: #55efc4;"><strong>₹10-13</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Frequency</strong></td>
+                    <td>1.1-2.5</td>
+                    <td>< 1.8</td>
+                    <td>< 1.5</td>
+                    <td>< 1.5</td>
+                    <td>< 1.5</td>
+                </tr>
+                <tr>
+                    <td><strong>Lead Quality Score</strong></td>
+                    <td>—</td>
+                    <td>Baseline</td>
+                    <td>6+/10 avg</td>
+                    <td>7+/10 avg</td>
+                    <td style="color: #55efc4;"><strong>7+/10 avg</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Monthly Projections -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+        <div class="metric-card" style="border-top: 3px solid var(--accent);">
+            <div class="metric-label">April Total Leads</div>
+            <div class="metric-value" style="color: var(--accent-light);">500-580</div>
+            <div class="metric-change" style="color: var(--text-dim);">17-19/day average</div>
+        </div>
+        <div class="metric-card" style="border-top: 3px solid var(--gold);">
+            <div class="metric-label">April Total Spend</div>
+            <div class="metric-value" style="color: var(--gold);">₹1,80,000</div>
+            <div class="metric-change" style="color: var(--text-dim);">₹6,000/day × 30</div>
+        </div>
+        <div class="metric-card" style="border-top: 3px solid var(--green);">
+            <div class="metric-label">Projected Blended CPL</div>
+            <div class="metric-value" style="color: var(--green);">₹310-360</div>
+            <div class="metric-change up">40% reduction from ₹528</div>
+        </div>
+        <div class="metric-card" style="border-top: 3px solid var(--purple);">
+            <div class="metric-label">Site Visits (Est.)</div>
+            <div class="metric-value" style="color: #a29bfe;">50-70</div>
+            <div class="metric-change" style="color: var(--text-dim);">10-12% of leads</div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION 10: IMPLEMENTATION TIMELINE -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="timeline">
+    <div class="section-header">
+        <div class="section-number">Section 10</div>
+        <h2 class="section-title">Implementation Timeline</h2>
+        <p class="section-desc">Step-by-step execution plan starting April 2, 2026</p>
+    </div>
+
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-date">Day 1 — April 2 (TODAY)</div>
+            <div class="timeline-title">Immediate Actions — Kill & Restructure</div>
+            <div class="timeline-desc">
+                1. PAUSE Andromeda Campaign entirely (save ₹1,927/day)<br>
+                2. PAUSE underperforming ads: "sencia actual Price" (₹32 CPC), "Green creatives" (₹40 CPC), "Market Thamizha Video" (₹38 CPC), "Yellow creatives" (₹50 CPC)<br>
+                3. Reduce "30km Chennai" ad set from ₹1,600 to ₹1,000/day<br>
+                4. INCREASE "Maraimalai Nagar" ad set from ₹500 to ₹1,500/day<br>
+                5. Set up Custom Audiences: Website Visitors (7d, 14d, 30d), Video Viewers (75%+, 14d), Lead Form Openers
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">Day 2-3 — April 3-4</div>
+            <div class="timeline-title">Launch New Campaign Structure</div>
+            <div class="timeline-desc">
+                1. Create Campaign 1: SENCIA_LeadGen_Cold_Apr26 with 4 ad sets<br>
+                2. Create Campaign 2: SENCIA_Retarget_Warm_Apr26 with 3 ad sets<br>
+                3. Upload 3-4 new creatives per ad set (minimum)<br>
+                4. Set up Lookalike 1% audience from past leads<br>
+                5. Set cost cap bidding at ₹350 per lead
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">Day 4-5 — April 5-6</div>
+            <div class="timeline-title">Creative Launch & Testing Campaign</div>
+            <div class="timeline-desc">
+                1. Launch Campaign 3: SENCIA_Testing_Apr26<br>
+                2. Upload remaining creatives (carousel, video, Tamil copy variants)<br>
+                3. Set up A/B tests for headlines and primary text<br>
+                4. Monitor learning phase — DO NOT TOUCH budgets
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">Day 7 — April 8</div>
+            <div class="timeline-title">First Week Review & Optimize</div>
+            <div class="timeline-desc">
+                1. Pull full week data — compare CPL, CTR, CPC by ad set<br>
+                2. Apply kill rules to underperforming ads<br>
+                3. Apply scale rules to outperforming ad sets<br>
+                4. Review lead quality scores from sales team<br>
+                5. Adjust budgets based on ad set performance
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">Day 14 — April 15</div>
+            <div class="timeline-title">Mid-Month Optimization</div>
+            <div class="timeline-desc">
+                1. Full performance review — should be at CPL ₹340-380<br>
+                2. Refresh creatives showing fatigue (frequency > 1.5)<br>
+                3. Graduate winning test ad sets to cold campaign<br>
+                4. Expand lookalike to 2% if 1% is performing well<br>
+                5. Launch new creative angles based on top performers
+            </div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-date">Day 30 — April 30</div>
+            <div class="timeline-title">Month-End Review & May Planning</div>
+            <div class="timeline-desc">
+                1. Full month analysis — target: CPL ₹300-350, 500+ leads<br>
+                2. Identify top 3 performing audiences for May scaling<br>
+                3. Plan May creative calendar with new angles<br>
+                4. Evaluate budget increase if CPL target achieved<br>
+                5. Document learnings and update optimization rules
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- SECTION: LEAD FORM OPTIMIZATION -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<section class="section" id="leadform">
+    <div class="section-header">
+        <div class="section-number">Section 11</div>
+        <h2 class="section-title">Lead Form Optimization</h2>
+        <p class="section-desc">Optimized Instant Form setup for quality leads at standard quality</p>
+    </div>
+
+    <div class="card-grid-2">
+        <div class="card">
+            <h3 style="color: var(--accent-light);">Instant Form Structure</h3>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 1rem;">
+                <p><strong style="color: var(--text);">Form Type:</strong> More Volume (for ₹300-350 CPL target)</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--text);">Intro Section:</strong></p>
+                <p>Headline: "Get Exclusive Pricing for Sencia Villa Plots"<br>
+                Description: "RERA-approved plots from ₹16L in Maraimalai Nagar. Fill the form for a callback within 30 minutes."</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--text);">Fields (Keep Minimal):</strong></p>
+                <p>1. Full Name (prefilled)<br>
+                2. Phone Number (prefilled)<br>
+                3. Email (prefilled, optional)<br>
+                4. "What's your budget range?" → Dropdown: Under ₹20L | ₹20-40L | ₹40-60L | ₹60L+</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--text);">Thank You Screen:</strong></p>
+                <p>"Thank you! Our team will call you within 30 minutes."<br>
+                CTA: "Visit Our Website" → sencia.propshell.com</p>
+            </div>
+        </div>
+        <div class="card">
+            <h3 style="color: #55efc4;">Lead Quality Filter Tips</h3>
+            <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 1rem;">
+                <p><strong style="color: var(--text);">For Standard Quality at ₹300-350 CPL:</strong></p>
+                <div class="divider"></div>
+                <p>✅ Use "More Volume" form type — lower CPL but still decent quality with budget qualifier question</p>
+                <p>✅ Add budget range dropdown — filters out non-serious inquiries at form level</p>
+                <p>✅ Keep phone as prefilled (not manual) — faster submission but still captures real numbers</p>
+                <p>✅ Add context card showing price range before form — sets expectations</p>
+                <div class="divider"></div>
+                <p><strong style="color: var(--text);">If Lead Quality Drops Below 5/10 Average:</strong></p>
+                <p>🔄 Switch to "Higher Intent" form type (will increase CPL to ₹400-500)</p>
+                <p>🔄 Add manual phone number entry instead of prefilled</p>
+                <p>🔄 Add qualifying question: "When are you looking to buy?"</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════ -->
+<!-- FOOTER -->
+<!-- ══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+    <p style="margin-bottom: 0.5rem;">
+        <strong style="color: var(--accent-light);">SENCIA Meta Ads Master Plan</strong> — April 2026
+    </p>
+    <p>Prepared by AI Performance Marketing Specialist | Propshell Properties</p>
+    <p style="margin-top: 1rem; font-size: 0.75rem; color: var(--text-dim);">
+        Data Source: Windsor.ai (Facebook Ads API) | Analysis Date: April 2, 2026<br>
+        Budget: ₹6,000/day | Target CPL: ₹300-350 | Lead Quality: Standard
+    </p>
+</footer>
+
+<script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // Intersection Observer for active nav
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => { if(s.id) observer.observe(s); });
+
+    // Animate on scroll
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+</script>
+
+</body>
+</html>
